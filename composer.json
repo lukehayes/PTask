@@ -1,0 +1,10 @@
+{
+    "name": "lukehayes/p-task",
+    "authors": [
+        {
+            "name": "lukehayes",
+            "email": "lukepurplehayes@gmail.com"
+        }
+    ],
+    "require": {}
+}
