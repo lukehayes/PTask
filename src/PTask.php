@@ -14,6 +14,10 @@ class PTask
         if ($argc <= 2) {
             echo "No additonal arguments are present.\n"; 
             return;
+        } else
+        {
+            $flags = $this->parseArguments($argv);
+            $this->runTask($flags);;
         }
     }
 
@@ -46,15 +50,12 @@ class PTask
                 echo "Marking Task As Done.\n";
                 break;
             case "-clear":
-                $formatter->line();
                 echo "CLEARING ALL TASKS.\n";
-                $formatter->line();
                 break;
             
             default:
                 echo "Nothing To Be Done.\n";
                 break;
         }
-
     }
 }
