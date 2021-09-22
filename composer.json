@@ -6,5 +6,15 @@
             "email": "lukepurplehayes@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "symfony/var-dumper": "^5.3"
+    },
+
+    "autoload" : 
+    {
+        "psr-4" :
+        {
+            "PTask\\" : "src/"
+        }
+    }
 }
