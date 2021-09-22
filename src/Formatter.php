@@ -11,6 +11,7 @@ class Formatter
      *
      * @param int    $length    The number of characters. Default: 50.
      * @param string $char      The characters to print.  Default: "-".
+     */
     public function line($length = 50, $char ="-")
     {
         for ($i = 0; $i <= $length; $i++)
@@ -18,6 +19,14 @@ class Formatter
             echo $char;
         }
 
+        $this->newline();
+    }
+
+    /**
+     * Wrapper function for the new line character.
+     */
+    public function newline()
+    {
         echo "\n";
     }
 }
