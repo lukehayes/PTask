@@ -22,12 +22,14 @@ class PTask
     public function run($argc, $argv)
     {
         if ($argc <= 2) {
-            echo "No additonal arguments are present.\n"; 
+            // Run for a command without an argument list "-ls".
+            $this->runTask( [$argv[1]] );
             return;
         } else
         {
+            // Run as normal - "flag - argument".
             $flags = $this->parseArguments($argv);
-            $this->runTask($flags);;
+            $this->runTask($flags);
         }
     }
 
@@ -40,7 +42,12 @@ class PTask
     {
         $flags = [];
         array_push($flags, $args[1]);
-        array_push($flags, $args[2]);
+
+        if(array_key_exists(2, $args))
+        {
+            array_push($flags, $args[2]);
+        }
+
         return $flags;
     }
 
@@ -53,10 +60,8 @@ class PTask
 
         switch ($task[0]) {
             case "-ls":
-
                 $formatter->titleBar("All Tasks");
                 $this->taskManager->read();
-
                 break;
             case "-a":
                 echo "Adding Tasks.\n";
