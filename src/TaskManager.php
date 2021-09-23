@@ -44,7 +44,8 @@ class TaskManager
      */
     public function write(string $text) : void
     {
-        file_put_contents($this->todolist, $text . "\n", FILE_APPEND);
+        $text = $text . "\n";
+        file_put_contents($this->todolist, $text, FILE_APPEND);
     }
 
     /**
