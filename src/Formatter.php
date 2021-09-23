@@ -16,7 +16,7 @@ class Formatter
     {
         for ($i = 0; $i <= $length; $i++)
         {
-            echo $char;
+            $this->out($char);
         }
 
         $this->newline();
@@ -31,7 +31,7 @@ class Formatter
     public function titleBar($contents, $size = 50)
     {
         $this->line($size);
-        echo $contents;
+        $this->out($contents);
         $this->newline();
         $this->line($size);
     }
@@ -41,6 +41,17 @@ class Formatter
      */
     public function newline()
     {
-        echo "\n";
+        $this->out("\n");
+    }
+
+    /**
+     * A simple wrapper for an echo statment.
+     *
+     * @param string $text
+     * @return void
+     */
+    public function out($text)
+    {
+        echo $text;
     }
 }
