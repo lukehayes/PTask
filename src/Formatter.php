@@ -23,6 +23,20 @@ class Formatter
     }
 
     /**
+     * Output a title bar (two lines) with some content.
+     *
+     * @param string $contents    The text to output.
+     * @param int $size           The size of the lines.
+     */
+    public function titleBar($contents, $size = 50)
+    {
+        $this->line($size);
+        echo $contents;
+        $this->newline();
+        $this->line($size);
+    }
+
+    /**
      * Wrapper function for the new line character.
      */
     public function newline()
