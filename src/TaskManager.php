@@ -57,5 +57,16 @@ class TaskManager
     {
         return file_get_contents($this->todolist);
     }
+
+    /**
+     * Get the entire contents of a file and return each line in a list.
+     *
+     * @return array    The files contents.
+     */
+    public function getArrayList() : array
+    {
+        return explode("\n", file_get_contents($this->todolist));
+    }
+
 }
 
