@@ -14,7 +14,7 @@ class Formatter
      */
     public function line($length = 50, $char ="-")
     {
-        for ($i = 0; $i <= $length; $i++)
+        for ($i = 1; $i <= $length; $i++)
         {
             $this->out($char);
         }
