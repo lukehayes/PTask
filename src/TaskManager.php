@@ -10,9 +10,14 @@ class TaskManager
      * @var string $todolist */
     private $todolist = NULL;
 
+    /**
+     * @var array $todolist */
+    private $todoListItems = NULL;
+
     public function __construct($file)
     {
         $this->todolist = $file;
+        $this->todoListItems = $this->getArrayList();
     }
 
     /**
@@ -76,6 +81,21 @@ class TaskManager
     public function findByPosition(int $position)
     {
         return $this->getArrayList()[$position];
+    }
+
+    /**
+     * Remove an item from the list by its ID.
+     *
+     * @param int $position
+     */
+    public function removeByPosition($position)
+    {
+        $item = $this->getArrayList()[$position];
+        $result = preg_replace("/$item\n/", "", $this->getTodolist());
+
+        $handle = fopen($this->todolist, "w");
+        fwrite($handle, $result);
+        fclose($handle);
     }
 
 }
