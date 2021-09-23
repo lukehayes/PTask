@@ -37,6 +37,23 @@ class Formatter
     }
 
     /**
+     * Output a list with each item begining with a number.
+     *
+     * @param array $list    The text to output.
+     *
+     * @return void
+     */
+    public function numberedList($list)
+    {
+        $this->newline();
+        for($i = 0; $i <= count($list) - 2; $i++)
+        {
+            $this->out($i . " - " . $list[$i]);
+            $this->newline();
+        }
+    }
+
+    /**
      * Wrapper function for the new line character.
      */
     public function newline()
