@@ -36,6 +36,18 @@ class TaskManager
     }
 
     /**
+     * Write a new task to the todolist.
+     *
+     * @param string $text    The text to write.
+     *
+     * @return void         
+     */
+    public function write(string $text) : void
+    {
+        file_put_contents($this->todolist, $text . "\n", FILE_APPEND);
+    }
+
+    /**
      * Get the entire contents of a file.
      *
      * @return string         The files contents.

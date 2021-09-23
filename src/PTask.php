@@ -65,6 +65,7 @@ class PTask
                 break;
             case "-a":
                 echo "Adding Tasks.\n";
+                $this->taskManager->write($option->argument);
                 break;
             case "-d":
                 echo "Marking Task As Done.\n";
