@@ -3,6 +3,7 @@ namespace PTask;
 
 use PTask\TaskManager;
 use PTask\Formatter;
+use PTask\Option;
 
 /**
  * Main entry point for this application.
@@ -23,13 +24,13 @@ class PTask
     {
         if ($argc <= 2) {
             // Run for a command without an argument list "-ls".
-            $this->runTask( [$argv[1]] );
+            $this->runTask( new Option($argv[1]) );
             return;
         } else
         {
             // Run as normal - "flag - argument".
-            $flags = $this->parseArguments($argv);
-            $this->runTask($flags);
+            $option = $this->parseArguments($argv);
+            $this->runTask($option);
         }
     }
 
@@ -38,27 +39,26 @@ class PTask
      *
      * @return array
      */
-    function parseArguments($args) : array
+    function parseArguments($args) : Option
     {
-        $flags = [];
-        array_push($flags, $args[1]);
+        $option = new Option($args[1]);
 
         if(array_key_exists(2, $args))
         {
-            array_push($flags, $args[2]);
+            $option->argument = $args[2];
         }
 
-        return $flags;
+        return $option;
     }
 
     /**
      * Run the appropiate task based on flag input.
      */
-    public function runTask($task)
+    public function runTask($option)
     {
         $formatter = new Formatter();
 
-        switch ($task[0]) {
+        switch ($option->flag) {
             case "-ls":
                 $formatter->titleBar("All Tasks");
                 $this->taskManager->read();
