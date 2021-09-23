@@ -2,6 +2,7 @@
 namespace PTask;
 
 use PTask\TaskManager;
+use PTask\Formatter;
 
 /**
  * Main entry point for this application.
@@ -48,10 +49,14 @@ class PTask
      */
     public function runTask($task)
     {
+        $formatter = new Formatter();
+
         switch ($task[0]) {
             case "-ls":
-                echo "Listing All Tasks...\n";
+
+                $formatter->titleBar("All Tasks");
                 $this->taskManager->read();
+
                 break;
             case "-a":
                 echo "Adding Tasks.\n";
