@@ -61,17 +61,24 @@ class PTask
         switch ($option->flag) {
             case "-ls":
                 $formatter->titleBar("All Tasks");
-                $this->taskManager->read();
+                $formatter->numberedList(explode("\n", $this->taskManager->getTodolist()));
+                //$this->taskManager->read();
+                $formatter->newline();
                 break;
             case "-a":
                 echo "Adding Tasks.\n";
-                $this->taskManager->write($option->argument);
+                if($this->taskManager->userConfirmed()){
+                    $this->taskManager->write($option->argument);
+                }
                 break;
             case "-d":
-                echo "Marking Task As Done.\n";
+                //echo "Marking Task As Done.\n";
+                //echo $this->taskManager->findByPosition($option->argument);
+                $this->taskManager->removeByPosition($option->argument);
                 break;
             case "-clear":
                 echo "CLEARING ALL TASKS.\n";
+                $this->taskManager->clearFile();
                 break;
             
             default:
