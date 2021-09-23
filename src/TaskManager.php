@@ -68,5 +68,15 @@ class TaskManager
         return explode("\n", file_get_contents($this->todolist));
     }
 
+    /**
+     * Find a task by its position in the list.
+     *
+     * @return string The files contents.
+     */
+    public function findByPosition(int $position)
+    {
+        return $this->getArrayList()[$position];
+    }
+
 }
 
