@@ -108,5 +108,23 @@ class TaskManager
         file_put_contents($this->todolist, "");
     }
 
+
+    /**
+     * Check for confirmation for the user - should be called before a permenant change is made.
+     *
+     * @return boolean
+     */
+    public function userConfirmed() : bool
+    {
+        $choice = readline("Are you sure? y:[N]");
+
+        if ($choice !== "Y" | $choice !== "y") {
+           return true; 
+        } else {
+           return false; 
+        }
+
+    }
+
 }
 
