@@ -1,11 +1,20 @@
 <?php
 namespace PTask;
 
+use PTask\TaskManager;
+
 /**
  * Main entry point for this application.
  */
 class PTask
 {
+    private $taskManager = NULL;
+
+    public function __construct()
+    {
+        $this->taskManager = new TaskManager("todo.txt");
+    }
+
     /**
      * Start the application.
      */
@@ -42,6 +51,7 @@ class PTask
         switch ($task[0]) {
             case "-ls":
                 echo "Listing All Tasks...\n";
+                $this->taskManager->read();
                 break;
             case "-a":
                 echo "Adding Tasks.\n";
