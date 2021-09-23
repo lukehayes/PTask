@@ -98,5 +98,15 @@ class TaskManager
         fclose($handle);
     }
 
+    /**
+     * Completely wipe all of the data from the todolist.
+     *
+     * @return void
+     */
+    public function clearFile() : void
+    {
+        file_put_contents($this->todolist, "");
+    }
+
 }
 
