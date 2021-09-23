@@ -28,10 +28,19 @@ class TaskManager
     /**
      * Read the entire contents of a file
      *
-     * @param string $file    The file to be read.
+     * @return void         The files contents.
+     */
+    public function read() : void
+    {
+        echo file_get_contents($this->todolist);
+    }
+
+    /**
+     * Get the entire contents of a file.
+     *
      * @return string         The files contents.
      */
-    public function read() : string
+    public function getTodolist() : string
     {
         return file_get_contents($this->todolist);
     }
