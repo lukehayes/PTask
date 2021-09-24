@@ -31,11 +31,11 @@ class TaskManager
     }
 
     /**
-     * Read the entire contents of a file
+     * Read the entire contents of a file and output as string.
      *
      * @return void         The files contents.
      */
-    public function read() : void
+    public function readRaw() : void
     {
         echo file_get_contents($this->todolist);
     }
